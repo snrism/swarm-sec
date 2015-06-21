@@ -5,29 +5,25 @@
   1.	Check if swarm daemon is started inside the container and not in the host
   2.	Keep Swarm up-to-date (Check for swarm latest version)
   3.	Check swarm’s log-level and discourage use of debug
-  4.	Check if docker default port is used. Docker should be started on a network interface and with its default port.
-  5.	Check if TLS is enabled: Ensure that –tlsverify, --tlscert, --tlscacert, --tlskey are present.
-  6.	Check if heartbeat is a low-value and recommend using 20s
-  7.	Warn about missing API endpoints
-  8.	Warn about which APIs behave differently b/w swarm and docker
-  9.	Warn that mesos driver is experimental
-
----
-
-##	Master Node Configuration
-  1.	Verify if docker-machine is installed for default installation of swarm and WARN if its manual installation.
-  2.	Verify TLS file permission configuration.
+  4.	Verify if docker default port is used and with port correct default port proxy.
+  5.	Verify if TLS is enabled:
+    i.	Ensure that –tlsverify, --tlscert, --tlscacert, --tlskey are present.
+  6.	Verify if heartbeat is a low-value and recommend using 20s
+  7.	Verify for cluster-driver. If mesos driver is used, warn it to be experimental
+  8.	Verify if master replication is enabled and warn if not.
+  9.	Verify if AppArmor or SecurityOpt is enabled for Swarm container
+  10. Verify if cross-origin resource sharing is enabled for remote API
+      calls.
 
 ---
 
 ## Cluster Node & Runtime Setup
-  1.	Check if docker –H is started
-  2.	Verify client and server are running the same docker version
-  3.	Check if each node has unique labels
-  4.	Verify TLS file permission configuration for each node
-  5.	Run docker-bench and parse each node:
-    1. To reduce cluttering of output, we can only show tests that didn’t pass with suggested output.
-    2. Improve output to not just fail/pass, but also add suggestions or preferred options
+  1.	Verify client and server are running the same docker version
+  2.	Check if each node has unique labels
+  3.  Verify the cluster node configuration
+  4.  Verify docker daemon configuration
+  5.  Determine the container runtime configuration status (images &
+      containers)
 
 ---
 
