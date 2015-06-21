@@ -1,4 +1,5 @@
 #!/bin/sh
+# Helper function from docker-bench
 bldred='\033[1;31m'
 bldgrn='\033[1;32m'
 bldblu='\033[1;34m'
