@@ -1,6 +1,6 @@
 #!/bin/sh
 # ------------------------------------------------------------------------------
-# Swarm Bench assesses the security of a native docker cluster 
+# Swarm-sec assesses the security of a native docker cluster 
 # ------------------------------------------------------------------------------
 
 # Load dependencies
@@ -31,17 +31,17 @@ usage () {
   printf "
   usage: %s [options]
    options:
-     -n <hostname/ip> for running on specific node
-     -t  token string
-     -h  print this help message\n" "$myname"
+     -n  <hostname> 	to assess the security of the specified node
+     -t  <token-id> 	token-id used to create the cluster
+     -h  		print this help message\n"
   exit 1
 }
 
-yell "# ------------------------------------------------------------------------------
+yell "# -----------------------------------------
 # Swarm Cluster Security Assessment
 #
 # Provides automated tests for Swarm 0.3.0:
-# ------------------------------------------------------------------------------"
+# -----------------------------------------"
 
 logit "Initializing $(date)\n"
 
@@ -49,7 +49,7 @@ logit "Initializing $(date)\n"
 ID=$(id -u)
 if [ "x$ID" != "x0" ]; then
     warn "Some tests might require root to run"
-    sleep 3
+    #sleep 3
 fi
 
 # Get the flags
