@@ -17,12 +17,16 @@
 
 ---
 
-## Cluster Node & Runtime Setup
+## Cluster Runtime Assessment
   1.	Verify client and server are running the same docker version
   2.	Check if each node has unique labels
-  3.  Verify the cluster node configuration
-  4.  Verify docker daemon configuration
-  5.  Determine the container runtime configuration status (images &
+
+---
+
+## Cluster Node Assessment
+  1.  Verify the cluster node configuration
+  2.  Verify docker daemon configuration
+  3.  Determine the container runtime configuration status (images &
       containers)
 
 ---
