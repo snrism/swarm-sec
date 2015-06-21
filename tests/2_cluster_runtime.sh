@@ -31,19 +31,20 @@ else
 fi
 
 #2.3
-check_2_3="2.3 - Check cluster nodes"
+check_2_3="2.3 - Assessing security of all nodes in the cluster"
 if [ -z "$token" ]
 then 
  info "   * Specify token with  -t "
  usage
 else 
   if [ -z "$node" ];then
-    info "   * Checking all nodes"
+    echo ""
+    info "$check_2_3"
 
     for i in `docker run --rm swarm list token://$token`
       do
       echo ""
-      echo "Running docker-bench in $i" 
+      info "Running docker-bench in $i" 
       docker -H tcp://$i run -it --rm --net host --pid host --cap-add audit_control \
            -v /var/lib:/var/lib \
            -v /var/run/docker.sock:/var/run/docker.sock \
