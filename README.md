@@ -40,13 +40,13 @@ docker run -it --net host --pid host --cap-add audit_control \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /usr/lib/systemd:/usr/lib/systemd \
     -v /etc:/etc --label swarm-sec \
-    swarm-sec
+    swarm-sec <token-id>
 ```
 
 Alternatively, swarm-sec can be started by just running
 ```sh
 cd <swarm-sec>
-sh swarm-sec.sh (Not recommended. Lets containerize swarm-sec :))
+sh swarm-sec.sh <token-id> (Not recommended. Lets containerize swarm-sec :))
 ```
 
 ---
@@ -70,7 +70,7 @@ docker run -it --net host --pid host --cap-add audit_control \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /usr/lib/systemd:/usr/lib/systemd \
     -v /etc:/etc --label swarm-sec \
-    swarm-sec
+    swarm-sec <token-id>
 ```
 
 Run swarm-sec on a single cluster node using:
@@ -80,7 +80,7 @@ docker run -it --net host --pid host --cap-add audit_control \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /usr/lib/systemd:/usr/lib/systemd \
     -v /etc:/etc --label swarm-sec \
-    swarm-sec -n <hostname> -t <token-id>
+    swarm-sec <token-id> <hostname>
 ```
 
 ---
