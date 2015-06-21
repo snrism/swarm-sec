@@ -1,4 +1,4 @@
-# swarm-sec: A native cluster security assessment tool
+# swarm-sec – Swarm Security Assessment tool
 
 ---
 
