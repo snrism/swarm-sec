@@ -1,4 +1,4 @@
-# Swarm-sec: A native cluster security assessment tool
+# swarm-sec: A native cluster security assessment tool
 
 ---
 
@@ -10,7 +10,7 @@ Currently swarm-sec can:
 * Remote connection issues between the node and swarm manager
 
 The list of test scenarios considered in the current version is
-documented here [TESTCASES](tests/TESTS.md)
+documented [here](https://github.com/snrism/swarm-sec/blob/master/tests/TEST.md)
 
 ---
 
@@ -21,7 +21,7 @@ documented here [TESTCASES](tests/TESTS.md)
 * Ensure that all nodes run docker version 1.6.0 or above (run `docker
   version`)
 
-# Swarm-sec Installation
+# Installation
 
 Step-by-step installation and setup information are enumerated below:
 
