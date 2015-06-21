@@ -3,8 +3,10 @@
 logit "\n"
 info "2  - Cluster Runtime"
 
-token=e7f5da36dea5dcfb7fe1b23eb4222774
+#token=e7f5da36dea5dcfb7fe1b23eb4222774
 #node="host1"
+token=$1
+node=$2
 
 #2.1
 check_2_1="2.1 - Swarm Master and Cluster Nodes are running the same docker engine version"

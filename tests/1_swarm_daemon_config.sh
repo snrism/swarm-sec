@@ -2,6 +2,8 @@
 
 logit "\n"
 info "1 - Swarm Daemon Configuration"
+token=$1
+node=$2
 
 # 1.1
 check_1_1="1.1 - Swarm up to date"

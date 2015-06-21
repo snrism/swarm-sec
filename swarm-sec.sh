@@ -29,10 +29,8 @@ fi
 
 usage () {
   printf "
-  usage: %s [options]
+  usage: %s <token-id <hostname> [options]
    options:
-     -n  <hostname> 	to assess the security of the specified node
-     -t  <token-id> 	token-id used to create the cluster
      -h  		print this help message\n"
   exit 1
 }
@@ -53,12 +51,10 @@ if [ "x$ID" != "x0" ]; then
 fi
 
 # Get the flags
-while getopts :h:n:t: args
+while getopts :h: args
 do
   case $args in
   h) usage;;
-  n) node="$2";;
-  t) token="$4";;
   *) usage ;;
   esac
 done
@@ -76,9 +72,13 @@ main () {
   # List all running containers except swarm-sec
   containers=$(docker ps -q | grep -v "$benchcont")
 
+  if [ -z $1 ]; then
+    echo "Please specify a <token-id>"
+    exit 1;
+  fi
   for test in tests/*.sh
   do
-     . ./"$test"
+     . ./"$test" $1 $2
   done
 }
 

@@ -3,8 +3,10 @@
 logit "\n"
 info "3  - Cluster Node-specific Assessment"
 
-token=e7f5da36dea5dcfb7fe1b23eb4222774
-#node="host1"
+#Currently testing with a static token
+#token=e7f5da36dea5dcfb7fe1b23eb4222774
+token=$1
+node=$2
 
 #3.1
 check_3_1="3.1 - Assessing security of all nodes in the cluster"
@@ -31,7 +33,7 @@ else
     done
   else
     echo "----------------------------------------------------"
-    info "Running docker-bench in $i"
+    info "Running docker-bench in $node"
     echo "----------------------------------------------------"
     docker -H tcp://0.0.0.0:2375 run -e constraint:node==$node -it --rm --net host --pid host --cap-add audit_control \
          -v /var/lib:/var/lib \
