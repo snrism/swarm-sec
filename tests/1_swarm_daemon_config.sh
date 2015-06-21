@@ -154,3 +154,16 @@ if [ $seval -ge 0 ] || [ $armorval -ge 0 ]; then
 else
   pass "$check_1_9"
 fi
+
+#1.10
+check_1_10="1.10 - Swarm manager enabled CORS for remote API"
+# Check if swarm manager has enabled cors for remote API
+cors=0
+setup=$(ps aux | grep "swarm manage" | grep -v grep)
+contains "$setup" "--api-enable-cors" && cors=1
+contains "$setup" "-cors" && cors=2
+if [ $cors -gt 0 ]; then
+  pass "$check_1_10"
+else
+  warn "1.10 - Enable cross-origin resource sharing"
+fi
