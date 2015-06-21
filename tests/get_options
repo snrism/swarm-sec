@@ -1,0 +1,20 @@
+#!/bin/bash
+get_opt(){
+
+while getopts n:t:p opt
+ do
+      case $opt in
+          t) TOKEN="${OPTARG}"
+             if [ "$TOKEN" == "" ]
+             then
+               usage $0
+             else
+                echo "Token is " $BAL
+             fi ;;
+
+          n) node="$OPTARG";;
+          ?) usage $0
+             exit 1;;
+      esac
+done
+}
