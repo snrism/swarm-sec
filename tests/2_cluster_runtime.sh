@@ -25,46 +25,10 @@ done
 
 #2.2
 check_2_2="2.2 - Nodes have distinct user-specified labels"
-dupe_label=`docker -H tcp://0.0.0.0:2375 info |grep Labels |awk -F: '{print $2}'| sort -n | uniq -d`;
+dupe_label=`docker -H tcp://0.0.0.0:2375 info | grep Labels |awk -F: '{print $2}'| sort -n | uniq -d`;
 if [ -z "$dupe_label" ]
  then
-   pass "$check_2_2" 
+   pass "$check_2_2"
 else
    warn  "2.2 - User-specified node label is not unique. Check cluster node labels!!"
-fi
-
-#2.3
-check_2_3="2.3 - Assessing security of all nodes in the cluster"
-if [ -z "$token" ]
-then
- info "   * Specify token with  -t "
- usage
-else
-  if [ -z "$node" ];then
-    info "$check_2_3"
-
-    for i in `docker run --rm swarm list token://$token`
-      do
-      echo "----------------------------------------------------"
-      info "Running docker-bench in $i"
-      echo "----------------------------------------------------" 
-      docker -H tcp://$i run -it --rm --net host --pid host --cap-add audit_control \
-           -v /var/lib:/var/lib \
-           -v /var/run/docker.sock:/var/run/docker.sock \
-           -v /usr/lib/systemd:/usr/lib/systemd \
-           -v /etc:/etc -v /etc/docker:/etc/docker --label docker-bench-security \
-            diogomonica/docker-bench-security | egrep -i 'warn'
- 
-    done 
-  else
-    echo "----------------------------------------------------"
-    info "Running docker-bench in $i"
-    echo "----------------------------------------------------"
-    docker -H tcp://0.0.0.0:2375 run -e constraint:node==$node -it --rm --net host --pid host --cap-add audit_control \
-         -v /var/lib:/var/lib \
-         -v /var/run/docker.sock:/var/run/docker.sock \
-         -v /usr/lib/systemd:/usr/lib/systemd \
-         -v /etc:/etc -v /etc/docker:/etc/docker --label docker-bench-security \
-         diogomonica/docker-bench-security | egrep -i 'warn'
-fi
 fi
